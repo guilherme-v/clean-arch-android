@@ -31,7 +31,7 @@ class ProjectsDataRepository @Inject constructor(
     }
 
     override fun unbookmarkProject(projectId: String): Completable {
-        return storeObservableFactory.cacheStore.setProjectAsBookmarked(projectId)
+        return storeObservableFactory.cacheStore.setProjectAsNotBookmarked(projectId)
     }
 
     override fun getBookmarkedProjects(): Observable<List<Project>> {
