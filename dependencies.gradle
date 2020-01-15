@@ -37,5 +37,20 @@ ext {
     ]
 
 
-
+    // ------------------------------------------------------------------------ //
+    // Data Note
+    // ------------------------------------------------------------------------ //
+    data = [
+            dependencies: [
+                    "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlin_version}",
+                    "io.reactivex.rxjava2:rxkotlin:${rx_kotlin_version}",
+                    "javax.annotation:jsr250-api:${javax_annotation_version}",
+                    "javax.inject:javax.inject:${javax_inject_version}",
+            ],
+            testDependencies: [
+                    "junit:junit:${junit_version}",
+                    "io.mockk:mockk:${mockK_version}",
+                    "org.assertj:assertj-core:${assertj_version}",
+            ],
+    ]
 }
