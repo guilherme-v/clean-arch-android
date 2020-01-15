@@ -1,0 +1,41 @@
+ext {
+
+    // Android
+    android_compile_sdk_version = 29
+    android_build_tools_version = "29.0.2"
+    android_min_sdk_version = 22
+    android_target_sdk_version = 29
+
+    rx_kotlin_version = '2.4.0'
+    javax_annotation_version = '1.0'
+    javax_inject_version = '1'
+
+    // Testing
+    junit_version = '4.13'
+    mockK_version = '1.9.3.kotlin12'
+    assertj_version = '3.14.0'
+
+
+    // ------------------------------------------------------------------------ //
+    // Domain Note
+    // ------------------------------------------------------------------------ //
+    // - It is a Pure Kotlin/Java library
+    // - It is the central layer (all other layers points in this direction)
+    // - It does not have any external dependencies like Android Framework
+    // - It holds the business logic of our application
+    domain = [
+            dependencies: [
+                    "io.reactivex.rxjava2:rxkotlin:${rx_kotlin_version}",
+                    "javax.annotation:jsr250-api:${javax_annotation_version}",
+                    "javax.inject:javax.inject:${javax_inject_version}",
+            ],
+            testDependencies: [
+                    "junit:junit:${junit_version}",
+                    "io.mockk:mockk:${mockK_version}",
+                    "org.assertj:assertj-core:${assertj_version}",
+            ],
+    ]
+
+
+
+}
