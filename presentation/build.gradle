@@ -25,29 +25,16 @@ android {
         sourceCompatibility 1.8
         targetCompatibility 1.8
     }
-
-    testOptions {
-        unitTests {
-            includeAndroidResources = true
-        }
-    }
 }
 
 dependencies {
 
-    def cache = rootProject.ext.cache
+    def presentation = rootProject.ext.presentation
 
-    compileOnly "javax.annotation:jsr250-api:${javax_annotation_version}"
+    implementation presentation.dependencies
+    implementation presentation.testDependencies
 
-    implementation cache.dependencies
-    implementation cache.testDependencies
+    kapt presentation.compilers
 
-    // https://github.com/robolectric/robolectric/issues/5245
-    testImplementation("org.robolectric:robolectric:${robolectric_version}") {
-        exclude group: 'com.google.auto.service', module: 'auto-service'
-    }
-
-    kapt cache.compilers
-
-    implementation project(':data')
+    implementation project(':domain')
 }

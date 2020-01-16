@@ -7,7 +7,7 @@ import br.curitiba.android.clean.domain.usecase.base.CompletableUseCase
 import io.reactivex.Completable
 import javax.inject.Inject
 
-class BookmarkProject @Inject constructor(
+open class BookmarkProject @Inject constructor(
     private val projectsRepository: ProjectsRepository,
     postExecutionThread: PostExecutionThread,
     executionThread: ExecutionThread

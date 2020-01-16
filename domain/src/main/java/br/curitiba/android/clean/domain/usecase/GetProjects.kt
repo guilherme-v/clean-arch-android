@@ -12,9 +12,9 @@ open class GetProjects @Inject constructor(
     private val projectsRepository: ProjectsRepository,
     postExecutionThread: PostExecutionThread,
     executionThread: ExecutionThread
-) : ObservableUseCase<List<Project>, Nothing>(postExecutionThread, executionThread) {
+) : ObservableUseCase<List<Project>, Unit>(postExecutionThread, executionThread) {
 
-    override fun buildUseCaseObservable(params: Nothing?): Observable<List<Project>> {
+    override fun buildUseCaseObservable(params: Unit?): Observable<List<Project>> {
         return projectsRepository.getProjects()
     }
 }
