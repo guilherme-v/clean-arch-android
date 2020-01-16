@@ -6,6 +6,7 @@ ext {
     android_min_sdk_version = 22
     android_target_sdk_version = 29
 
+    // Libs
     rx_kotlin_version = '2.4.0'
     javax_annotation_version = '1.0'
     javax_inject_version = '1'
@@ -13,11 +14,14 @@ ext {
     ok_http_version = '4.3.0'
     retrofit_version = '2.7.1'
     dagger_version = '2.25.4'
+    room_version = '2.2.3'
 
     // Testing
     junit_version = '4.13'
     mockK_version = '1.9.3.kotlin12'
     assertj_version = '3.14.0'
+    robolectric_version = '4.3.1'
+    test_core_version = '1.0.0'
 
 
     // ------------------------------------------------------------------------ //
@@ -80,6 +84,41 @@ ext {
                     "junit:junit:${junit_version}",
                     "io.mockk:mockk:${mockK_version}",
                     "org.assertj:assertj-core:${assertj_version}",
+            ],
+    ]
+
+    // ------------------------------------------------------------------------ //
+    // Cache
+    // ------------------------------------------------------------------------ //
+    cache = [
+            dependencies: [
+                    "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlin_version}",
+                    "io.reactivex.rxjava2:rxkotlin:${rx_kotlin_version}",
+                    "javax.inject:javax.inject:${javax_inject_version}",
+                    "androidx.room:room-runtime:${room_version}",
+                    "androidx.room:room-rxjava2:${room_version}",
+                    "com.google.dagger:dagger:${dagger_version}",
+            ],
+            testDependencies: [
+                    "junit:junit:${junit_version}",
+                    "io.mockk:mockk:${mockK_version}",
+                    "org.assertj:assertj-core:${assertj_version}",
+//                    "org.robolectric:robolectric:${robolectric_version}",
+                    "androidx.test:core:${test_core_version}",
+                    "androidx.arch.core:core-testing:2.1.0"
+
+            ],
+//            androidTestDependencies: [
+//                    "junit:junit:${junit_version}",
+//                    "io.mockk:mockk:${mockK_version}",
+//                    "org.assertj:assertj-core:${assertj_version}",
+//                    "org.robolectric:robolectric:${robolectric_version}",
+//                    "androidx.test:core:${test_core_version}"
+//            ],
+            compilers: [
+                    "com.google.dagger:dagger-android-processor:${dagger_version}",
+                    "com.google.dagger:dagger-compiler:${dagger_version}",
+                    "androidx.room:room-compiler:${room_version}",
             ],
     ]
 }

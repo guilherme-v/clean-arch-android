@@ -1,13 +1,12 @@
-package br.curitiba.android.clean.remote.fake
+package br.curitiba.android.clean.cache.fake
 
+import br.curitiba.android.clean.cache.model.config.ConfigCache
+import br.curitiba.android.clean.cache.model.project.ProjectCache
 import br.curitiba.android.clean.data.model.ProjectData
-import br.curitiba.android.clean.remote.model.OwnerDTO
-import br.curitiba.android.clean.remote.model.ProjectDTO
-import br.curitiba.android.clean.remote.model.ProjectsResponseDTO
 import java.util.*
 import java.util.concurrent.ThreadLocalRandom
 
-object FakeProjectFactory {
+object FakeFactory {
 
     fun randomUuid(): String {
         return UUID.randomUUID().toString()
@@ -37,7 +36,7 @@ object FakeProjectFactory {
         )
     }
 
-    fun makeRandomProjectDataList(size: Int): List<ProjectData> {
+    fun makeProjectDataList(size: Int): List<ProjectData> {
         val projects = mutableListOf<ProjectData>()
         repeat(size) {
             projects.add(makeProjectData())
@@ -45,19 +44,30 @@ object FakeProjectFactory {
         return projects
     }
 
-    fun makeRandomOwnerDTO() = OwnerDTO(randomUuid(), randomUuid())
 
-    fun makeProjectDTO() =
-        ProjectDTO(randomUuid(), randomUuid(), randomUuid(), randomInt(), randomUuid(), makeRandomOwnerDTO())
+    fun makeProjectCache() = ProjectCache(
+        randomUuid(),
+        randomUuid(),
+        randomUuid(),
+        randomUuid(),
+        randomUuid(),
+        randomUuid(),
+        randomUuid(),
+        false
+    )
 
-    fun makeProjectsDTOList(size: Int = randomInt()): List<ProjectDTO> {
-        val projects = mutableListOf<ProjectDTO>()
+
+    fun makeProjectCacheList(size: Int): List<ProjectCache> {
+        val projects = mutableListOf<ProjectCache>()
         repeat(size) {
-            projects.add(makeProjectDTO())
+            projects.add(makeProjectCache())
         }
         return projects
     }
 
-    fun makeRandomProjectsResponse() =
-        ProjectsResponseDTO(listOf(makeProjectDTO(), makeProjectDTO()))
+
+    fun makeConfigCache() = ConfigCache(
+        lastCacheTime = System.currentTimeMillis()
+    )
+
 }
