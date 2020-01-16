@@ -1,7 +1,7 @@
 package br.curitiba.android.remote
 
-import br.curitiba.android.data.model.ProjectData
-import br.curitiba.android.data.remote.ProjectsRemote
+import br.curitiba.android.clean.data.model.ProjectData
+import br.curitiba.android.clean.data.remote.ProjectsRemote
 import br.curitiba.android.remote.mapper.ProjectsResponseDTOMapper
 import br.curitiba.android.remote.service.GithubTrendingService
 import io.reactivex.Observable

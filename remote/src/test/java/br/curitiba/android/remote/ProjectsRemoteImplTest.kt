@@ -1,6 +1,6 @@
 package br.curitiba.android.remote
 
-import br.curitiba.android.data.model.ProjectData
+import br.curitiba.android.clean.data.model.ProjectData
 import br.curitiba.android.remote.fake.FakeProjectFactory
 import br.curitiba.android.remote.mapper.ProjectsResponseDTOMapper
 import br.curitiba.android.remote.model.ProjectDTO

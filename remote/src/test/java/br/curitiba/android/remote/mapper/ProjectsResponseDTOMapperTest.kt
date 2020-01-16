@@ -1,6 +1,6 @@
 package br.curitiba.android.remote.mapper
 
-import br.curitiba.android.data.model.ProjectData
+import br.curitiba.android.clean.data.model.ProjectData
 import br.curitiba.android.remote.fake.FakeProjectFactory
 import br.curitiba.android.remote.model.ProjectDTO
 import org.junit.Assert.*
