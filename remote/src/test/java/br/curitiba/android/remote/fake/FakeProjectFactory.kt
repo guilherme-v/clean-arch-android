@@ -1,7 +1,7 @@
 package br.curitiba.android.remote.fake
 
 import br.curitiba.android.data.model.ProjectData
-import br.curitiba.android.domain.model.Project
+import br.curitiba.android.clean.domain.model.Project
 import br.curitiba.android.remote.model.OwnerDTO
 import br.curitiba.android.remote.model.ProjectDTO
 import br.curitiba.android.remote.model.ProjectsResponseDTO

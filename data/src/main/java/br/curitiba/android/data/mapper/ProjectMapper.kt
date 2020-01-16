@@ -1,7 +1,7 @@
 package br.curitiba.android.data.mapper
 
 import br.curitiba.android.data.model.ProjectData
-import br.curitiba.android.domain.model.Project
+import br.curitiba.android.clean.domain.model.Project
 import javax.inject.Inject
 
 class ProjectMapper @Inject constructor(): DataMapper<ProjectData, Project> {

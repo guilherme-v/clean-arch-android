@@ -1,7 +1,7 @@
 package br.curitiba.android.data.fake
 
 import br.curitiba.android.data.model.ProjectData
-import br.curitiba.android.domain.model.Project
+import br.curitiba.android.clean.domain.model.Project
 import java.util.*
 import java.util.concurrent.ThreadLocalRandom
 

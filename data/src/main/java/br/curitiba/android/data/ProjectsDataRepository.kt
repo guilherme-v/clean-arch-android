@@ -2,8 +2,8 @@ package br.curitiba.android.data
 
 import br.curitiba.android.data.mapper.ProjectMapper
 import br.curitiba.android.data.store.projects.ProjectsStoreObservableFactory
-import br.curitiba.android.domain.model.Project
-import br.curitiba.android.domain.repository.ProjectsRepository
+import br.curitiba.android.clean.domain.model.Project
+import br.curitiba.android.clean.domain.repository.ProjectsRepository
 import io.reactivex.Completable
 import io.reactivex.Observable
 import javax.inject.Inject
