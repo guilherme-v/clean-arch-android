@@ -4,7 +4,7 @@ import br.curitiba.android.data.mapper.ProjectMapper
 import br.curitiba.android.data.store.projects.ProjectsCacheStore
 import br.curitiba.android.data.store.projects.ProjectsStore
 import br.curitiba.android.data.store.projects.ProjectsStoreObservableFactory
-import br.curitiba.android.fake.FakeProjectFactory
+import br.curitiba.android.data.fake.FakeProjectFactory
 import io.mockk.MockKAnnotations
 import io.mockk.every
 import io.mockk.impl.annotations.MockK

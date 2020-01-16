@@ -1,7 +1,10 @@
-package br.curitiba.android.fake
+package br.curitiba.android.remote.fake
 
 import br.curitiba.android.data.model.ProjectData
 import br.curitiba.android.domain.model.Project
+import br.curitiba.android.remote.model.OwnerDTO
+import br.curitiba.android.remote.model.ProjectDTO
+import br.curitiba.android.remote.model.ProjectsResponseDTO
 import java.util.*
 import java.util.concurrent.ThreadLocalRandom
 
@@ -27,7 +30,6 @@ object FakeProjectFactory {
         return Math.random() < 0.5
     }
 
-
     fun makeProjectData(): ProjectData {
         return ProjectData(
             randomString(), randomString(), randomString(),
@@ -36,16 +38,7 @@ object FakeProjectFactory {
         )
     }
 
-    fun makeProjectDataList(size: Int): List<ProjectData> {
-        val projects = mutableListOf<ProjectData>()
-        repeat(size) {
-            projects.add(makeProjectData())
-        }
-        return projects
-    }
-
-
-    fun makeProject(): Project {
+    fun makeRandomProject(): Project {
         return Project(
             randomString(), randomString(), randomString(),
             randomString(), randomString(), randomString(),
@@ -53,11 +46,27 @@ object FakeProjectFactory {
         )
     }
 
-    fun makeProjectList(size: Int): List<Project> {
-        val projects = mutableListOf<Project>()
+    fun makeRandomProjectDataList(size: Int): List<ProjectData> {
+        val projects = mutableListOf<ProjectData>()
         repeat(size) {
-            projects.add(makeProject())
+            projects.add(makeProjectData())
         }
         return projects
     }
+
+    fun makeRandomOwnerDTO() = OwnerDTO(randomUuid(), randomUuid())
+
+    fun makeProjectDTO() =
+        ProjectDTO(randomUuid(), randomUuid(), randomUuid(), randomInt(), randomUuid(), makeRandomOwnerDTO())
+
+    fun makeProjectsDTOList(size: Int = randomInt()): List<ProjectDTO> {
+        val projects = mutableListOf<ProjectDTO>()
+        repeat(size) {
+            projects.add(makeProjectDTO())
+        }
+        return projects
+    }
+
+    fun makeRandomProjectsResponse() =
+        ProjectsResponseDTO(listOf(makeProjectDTO(), makeProjectDTO()))
 }

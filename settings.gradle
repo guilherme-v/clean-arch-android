@@ -1,2 +1,2 @@
-include ':domain', ':data'
+include ':domain', ':data', ':remote'
 rootProject.name='CleanArch'

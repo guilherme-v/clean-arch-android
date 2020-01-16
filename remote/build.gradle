@@ -1,0 +1,14 @@
+apply plugin: 'kotlin'
+
+dependencies {
+
+    def remote = rootProject.ext.remote
+
+    implementation remote.dependencies
+    implementation remote.testDependencies
+
+    implementation project(':data')
+}
+
+sourceCompatibility = "8"
+targetCompatibility = "8"

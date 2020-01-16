@@ -1,7 +1,7 @@
 package br.curitiba.android.data.store.projects
 
 import br.curitiba.android.data.cache.ProjectsCache
-import br.curitiba.android.fake.FakeProjectFactory
+import br.curitiba.android.data.fake.FakeProjectFactory
 import io.mockk.MockKAnnotations
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
