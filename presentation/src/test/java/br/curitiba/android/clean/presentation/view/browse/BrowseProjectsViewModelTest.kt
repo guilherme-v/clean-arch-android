@@ -4,6 +4,8 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import br.curitiba.android.clean.domain.model.Project
 import br.curitiba.android.clean.domain.usecase.BookmarkProject
 import br.curitiba.android.clean.domain.usecase.GetProjects
+import br.curitiba.android.clean.domain.usecase.UnbookmarkProject
+import br.curitiba.android.clean.presentation.mapper.ProjectUIMapper
 import br.curitiba.android.clean.presentation.mapper.UIMapper
 import br.curitiba.android.clean.presentation.model.ProjectUI
 import br.curitiba.android.clean.presentation.resource.ResourceState
@@ -26,14 +28,15 @@ class BrowseProjectsViewModelTest {
 
     @MockK lateinit var getProjects: GetProjects
     @MockK lateinit var bookmarkProject: BookmarkProject
-    @MockK lateinit var projectUIMapper: UIMapper<ProjectUI, Project>
+    @MockK lateinit var unbookmarkProject: UnbookmarkProject
+    @MockK lateinit var projectUIMapper: ProjectUIMapper
 
     lateinit var viewModel: BrowseProjectsViewModel
 
     @Before
     fun setUp() {
         MockKAnnotations.init(this, relaxed = true)
-        viewModel = BrowseProjectsViewModel(getProjects, bookmarkProject, projectUIMapper)
+        viewModel = BrowseProjectsViewModel(getProjects, bookmarkProject, unbookmarkProject, projectUIMapper)
         viewModel.itemsResource // because we are using lazy we need to load this first
     }
 

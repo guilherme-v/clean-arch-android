@@ -5,8 +5,9 @@ import androidx.lifecycle.ViewModel
 import br.curitiba.android.clean.domain.model.Project
 import br.curitiba.android.clean.domain.usecase.BookmarkProject
 import br.curitiba.android.clean.domain.usecase.GetProjects
+import br.curitiba.android.clean.domain.usecase.UnbookmarkProject
 import br.curitiba.android.clean.presentation.extensions.mutableLivedataOf
-import br.curitiba.android.clean.presentation.mapper.UIMapper
+import br.curitiba.android.clean.presentation.mapper.ProjectUIMapper
 import br.curitiba.android.clean.presentation.model.ProjectUI
 import br.curitiba.android.clean.presentation.resource.Resource
 import br.curitiba.android.clean.presentation.resource.toFailed
@@ -19,7 +20,8 @@ import javax.inject.Inject
 class BrowseProjectsViewModel @Inject constructor(
     private val getProjects: GetProjects,
     private val bookmarkProject: BookmarkProject,
-    private val projectUIMapper: UIMapper<ProjectUI, Project>
+    private val unbookmarkProject: UnbookmarkProject,
+    private val projectUIMapper: ProjectUIMapper
 ) : ViewModel() {
 
     private val _itemsResource by lazy { mutableLivedataOf(Resource<List<ProjectUI>>()) }
@@ -32,6 +34,7 @@ class BrowseProjectsViewModel @Inject constructor(
 
     fun loadProjects() {
         _itemsResource.toLoading()
+        getProjects.dispose()
         getProjects.execute(LoadProjectsObserver())
     }
 
@@ -41,7 +44,12 @@ class BrowseProjectsViewModel @Inject constructor(
         bookmarkProject.execute(BookmarkProjectObserver(), params)
     }
 
-    // Can this be embedded into execute?
+    fun unbookmarkProject(projectId: String) {
+        _itemsResource.toLoading()
+        val params = UnbookmarkProject.Params.forProject(projectId)
+        unbookmarkProject.execute(BookmarkProjectObserver(), params)
+    }
+
     inner class LoadProjectsObserver : DisposableObserver<List<Project>>() {
         override fun onComplete() {}
 

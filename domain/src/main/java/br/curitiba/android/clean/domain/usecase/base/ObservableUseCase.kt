@@ -13,7 +13,6 @@ abstract class ObservableUseCase<T, in Params>(
     abstract fun buildUseCaseObservable(params: Params? = null): Observable<T>
 
     open fun execute(observer: DisposableObserver<T>, params: Params? = null) {
-        dispose()
 
         val observable = buildUseCaseObservable(params)
             .subscribeOn(executionThread.scheduler)

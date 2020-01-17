@@ -1,0 +1,59 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    def globalConfig = rootProject.extensions.getByName("ext")
+
+    compileSdkVersion globalConfig["android_compile_sdk_version"]
+    buildToolsVersion globalConfig["android_build_tools_version"]
+
+    defaultConfig {
+        minSdkVersion globalConfig["android_min_sdk_version"]
+        targetSdkVersion globalConfig["android_target_sdk_version"]
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+
+        testInstrumentationRunner "br.curitiba.android.clean.mobile_ui.TestRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+}
+
+dependencies {
+
+    def mobile = rootProject.ext.mobileUI
+
+    implementation mobile.dependencies
+    testImplementation mobile.testDependencies
+    androidTestImplementation mobile.androidTestDependencies
+
+    kapt mobile.compilers
+    kaptAndroidTest mobile.compilers
+
+    // https://stackoverflow.com/a/58073879/5501064
+    debugImplementation ("androidx.fragment:fragment-testing:1.1.0",
+            {exclude group: 'androidx.test', module: 'core' })
+
+    implementation project(':domain')
+    implementation project(':data')
+    implementation project(':remote')
+    implementation project(':cache')
+    implementation project(':presentation')
+}

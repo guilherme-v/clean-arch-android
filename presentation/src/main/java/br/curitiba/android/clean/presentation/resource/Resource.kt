@@ -13,13 +13,28 @@ data class Resource<T> constructor(
 )
 
 fun <T> MutableLiveData<Resource<T>>.toLoading() {
-    this.value = this.value?.copy(state = ResourceState.LOADING)
+    val updatedValue = Resource(
+        state = ResourceState.LOADING,
+        data = this.value?.data,
+        message = ""
+    )
+    this.postValue(updatedValue)
 }
 
 fun <T> MutableLiveData<Resource<T>>.toSucceeded(data: T?) {
-    this.value = this.value?.copy(state = ResourceState.SUCCEEDED, data = data)
+    val updatedValue = Resource(
+        state = ResourceState.SUCCEEDED,
+        data = data,
+        message = ""
+    )
+    this.postValue(updatedValue)
 }
 
 fun <T> MutableLiveData<Resource<T>>.toFailed(message: String?) {
-    this.value = this.value?.copy(state = ResourceState.FAILED, message = message)
+    val updatedValue = Resource(
+        state = ResourceState.FAILED,
+        data = this.value?.data,
+        message = message
+    )
+    this.postValue(updatedValue)
 }

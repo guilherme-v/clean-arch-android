@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import br.curitiba.android.clean.domain.model.Project
 import br.curitiba.android.clean.domain.usecase.GetBookmarkedProjects
 import br.curitiba.android.clean.presentation.extensions.mutableLivedataOf
+import br.curitiba.android.clean.presentation.mapper.ProjectUIMapper
 import br.curitiba.android.clean.presentation.mapper.UIMapper
 import br.curitiba.android.clean.presentation.model.ProjectUI
 import br.curitiba.android.clean.presentation.resource.Resource
@@ -16,7 +17,7 @@ import javax.inject.Inject
 
 class BookmarkedProjectsViewModel @Inject constructor(
     private val getBookmarkedProjects: GetBookmarkedProjects,
-    private val projectUIMapper: UIMapper<ProjectUI, Project>
+    private val projectUIMapper: ProjectUIMapper
 ) : ViewModel() {
 
     private val _itemsResource by lazy { mutableLivedataOf(Resource<List<ProjectUI>>()) }

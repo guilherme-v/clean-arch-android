@@ -17,6 +17,7 @@ class ProjectsDataRepository @Inject constructor(
         return storeObservableFactory.create()
             .flatMap { store ->
                 store.getProjects()
+                    .distinctUntilChanged()
             }
             .flatMap { projects ->
                 storeObservableFactory.cacheStore

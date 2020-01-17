@@ -17,14 +17,25 @@ ext {
     room_version = '2.2.3'
     lifecycle_version = '2.1.0'
     android_scheduler_version = '2.1.0'
+    navigation_version = '2.2.0-rc04'
+    support_library_version = '1.1.0'
+    material_support_library_version = '1.2.0-alpha03'
+    constraint_layout_version = '2.0.0-beta4'
+    ktx_version = '1.1.0'
+    glide_version = '4.10.0'
+    swipe_refresh_version = '1.0.0'
 
     // Testing
     junit_version = '4.13'
-    mockK_version = '1.9.3.kotlin12'
+    mockK_version = '1.9.2'
     assertj_version = '3.14.0'
     robolectric_version = '4.3.1'
-    test_core_version = '1.0.0'
     arch_core_testing_version = '2.1.0'
+    android_support_runner_version = '1.1.0'
+    androidx_text_ext = '1.1.1'
+    androidx_test_version = '1.3.0-alpha03'
+    androidx_frag_test_version = '1.1.0'
+    espresso_version = '3.2.0'
 
 
     // ------------------------------------------------------------------------ //
@@ -106,7 +117,7 @@ ext {
                     "junit:junit:${junit_version}",
                     "io.mockk:mockk:${mockK_version}",
                     "org.assertj:assertj-core:${assertj_version}",
-                    "androidx.test:core:${test_core_version}",
+                    "androidx.test:core:${androidx_test_version}",
                     "androidx.arch.core:core-testing:${arch_core_testing_version}"
             ],
             compilers: [
@@ -133,13 +144,65 @@ ext {
                     "junit:junit:${junit_version}",
                     "io.mockk:mockk:${mockK_version}",
                     "org.assertj:assertj-core:${assertj_version}",
-                    "androidx.test:core:${test_core_version}",
+                    "androidx.test:core:${androidx_test_version}",
                     "androidx.arch.core:core-testing:${arch_core_testing_version}"
             ],
             compilers: [
                     "com.google.dagger:dagger-android-processor:${dagger_version}",
                     "com.google.dagger:dagger-compiler:${dagger_version}",
                     "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
+            ],
+    ]
+
+    // ------------------------------------------------------------------------ //
+    // MobileUI
+    // ------------------------------------------------------------------------ //
+    mobileUI = [
+            dependencies: [
+                    "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlin_version}",
+                    "io.reactivex.rxjava2:rxkotlin:${rx_kotlin_version}",
+                    "javax.inject:javax.inject:${javax_inject_version}",
+                    "com.google.dagger:dagger:${dagger_version}",
+                    "com.google.dagger:dagger-android-support:${dagger_version}",
+                    "io.reactivex.rxjava2:rxandroid:$android_scheduler_version",
+                    "com.github.bumptech.glide:glide:${glide_version}",
+                    "androidx.room:room-runtime:${room_version}",
+                    "androidx.room:room-rxjava2:${room_version}",
+
+                    "androidx.lifecycle:lifecycle-extensions:$lifecycle_version",
+                    "androidx.lifecycle:lifecycle-reactivestreams-ktx:$lifecycle_version",
+                    "androidx.navigation:navigation-fragment-ktx:$navigation_version",
+                    "androidx.navigation:navigation-ui-ktx:$navigation_version",
+                    "androidx.appcompat:appcompat:$support_library_version",
+                    "androidx.recyclerview:recyclerview:$support_library_version",
+                    "androidx.swiperefreshlayout:swiperefreshlayout:${swipe_refresh_version}",
+                    "androidx.constraintlayout:constraintlayout:$constraint_layout_version",
+                    "androidx.constraintlayout:constraintlayout-solver:$constraint_layout_version",
+                    "androidx.core:core-ktx:$ktx_version",
+                    "com.google.android.material:material:$material_support_library_version",
+            ],
+            testDependencies: [
+                    "junit:junit:${junit_version}",
+                    "io.mockk:mockk:${mockK_version}",
+                    "org.assertj:assertj-core:${assertj_version}",
+                    "androidx.test:core:${androidx_test_version}",
+                    "androidx.arch.core:core-testing:${arch_core_testing_version}"
+            ],
+            androidTestDependencies: [
+                    "androidx.test:core:${androidx_test_version}",
+                    "androidx.test:runner:${androidx_test_version}",
+                    "androidx.test:rules:${androidx_test_version}",
+                    "androidx.test.ext:junit:1.1.1",
+//                    "androidx.fragment:fragment-testing:$androidx_frag_test_version",
+                    "androidx.test.espresso:espresso-core:$espresso_version",
+                    "androidx.test.espresso:espresso-contrib:$espresso_version",
+                    "androidx.arch.core:core-testing:${arch_core_testing_version}",
+                    "io.mockk:mockk-android:${mockK_version}",
+            ],
+            compilers: [
+                    "com.google.dagger:dagger-android-processor:${dagger_version}",
+                    "com.google.dagger:dagger-compiler:${dagger_version}",
+                    "androidx.lifecycle:lifecycle-compiler:$lifecycle_version",
             ],
     ]
 }

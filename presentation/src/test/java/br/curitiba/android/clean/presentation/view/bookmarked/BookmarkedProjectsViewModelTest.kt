@@ -3,8 +3,7 @@ package br.curitiba.android.clean.presentation.view.bookmarked
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import br.curitiba.android.clean.domain.model.Project
 import br.curitiba.android.clean.domain.usecase.GetBookmarkedProjects
-import br.curitiba.android.clean.presentation.mapper.UIMapper
-import br.curitiba.android.clean.presentation.model.ProjectUI
+import br.curitiba.android.clean.presentation.mapper.ProjectUIMapper
 import br.curitiba.android.clean.presentation.resource.ResourceState
 import br.curitiba.android.clean.presentation.test.FakeDataFactory
 import io.mockk.MockKAnnotations
@@ -23,7 +22,7 @@ class BookmarkedProjectsViewModelTest {
     @get:Rule var instantTaskExecutorRule = InstantTaskExecutorRule()
 
     @MockK lateinit var getBookmarkedProjects: GetBookmarkedProjects
-    @MockK lateinit var projectUIMapper: UIMapper<ProjectUI, Project>
+    @MockK lateinit var projectUIMapper: ProjectUIMapper
 
     lateinit var viewModel: BookmarkedProjectsViewModel
 

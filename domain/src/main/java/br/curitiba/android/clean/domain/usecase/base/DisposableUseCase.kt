@@ -5,7 +5,7 @@ import io.reactivex.disposables.Disposable
 
 abstract class DisposableUseCase {
 
-    private val disposables = CompositeDisposable()
+    private var disposables = CompositeDisposable()
 
     protected fun addDisposable(disposable: Disposable) {
         disposables.add(disposable)
@@ -13,5 +13,6 @@ abstract class DisposableUseCase {
 
     fun dispose() {
         if (!disposables.isDisposed) disposables.dispose()
+        disposables = CompositeDisposable()
     }
 }
