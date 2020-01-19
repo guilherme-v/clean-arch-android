@@ -193,7 +193,6 @@ ext {
                     "androidx.test:runner:${androidx_test_version}",
                     "androidx.test:rules:${androidx_test_version}",
                     "androidx.test.ext:junit:1.1.1",
-//                    "androidx.fragment:fragment-testing:$androidx_frag_test_version",
                     "androidx.test.espresso:espresso-core:$espresso_version",
                     "androidx.test.espresso:espresso-contrib:$espresso_version",
                     "androidx.arch.core:core-testing:${arch_core_testing_version}",
